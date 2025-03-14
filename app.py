@@ -9,8 +9,8 @@ st.set_page_config(
 )
 
 def main(start):
-    display_and_fetch_data(location)
-    
+    current_air_quality(display_and_fetch_data(location))
+
 # Displays the latitude and longitude from the location dictionary,
 # and uses them to perform a GET request.
 
