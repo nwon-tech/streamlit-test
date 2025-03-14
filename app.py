@@ -3,14 +3,22 @@ from streamlit_geolocation import streamlit_geolocation;
 import streamlit.components.v1 as components
 import requests;
 
-def display_and_fetch_data(location):
-    """
-    Displays the latitude and longitude from the location dictionary,
-    and uses them to perform a GET request.
+st.set_page_config(
+    page_title="PolluCheck",
+    page_icon="💨",
+)
+
+def main(start):
+    display_and_fetch_data(location)
     
-    Parameters:
-    - location: dict containing geolocation info with keys "latitude" and "longitude"
-    """
+# Displays the latitude and longitude from the location dictionary,
+# and uses them to perform a GET request.
+
+# Parameters:
+# - location: dict containing geolocation info with keys "latitude" and "longitude"
+
+def display_and_fetch_data(location):
+    
     # Extract latitude and longitude
     latitude = location.get("latitude")
     longitude = location.get("longitude")
@@ -24,19 +32,15 @@ def display_and_fetch_data(location):
     st.write("**Latitude:**", latitude)
     st.write("**Longitude:**", longitude)
 
-    # Construct the API URL with the latitude and longitude.
-    # Replace 'https://api.example.com/data' with your actual API endpoint.
-    # api_url = f"https://api.example.com/data?lat={latitude}&lon={longitude}"
+    # Call API URL with the latitude and longitude.
     api_url = f"https://api.waqi.info/feed/geo:{latitude};{longitude}/?token=261ee3243494eb7a36e0edd4deabfcc92eee9880"
 
-
-    # Make the GET request to the API
     try:
         response = requests.get(api_url)
-        response.raise_for_status()  # Raises an HTTPError for bad responses
+        response.raise_for_status()
         data = response.json()
         st.success("Data fetched successfully!")
-        current_air_quality(data)
+        return data
     except requests.exceptions.RequestException as e:
         st.error(f"Failed to retrieve data: {e}")
 
@@ -59,9 +63,10 @@ def current_air_quality(payload):
     st.write("**AQI:**", aqi)
 
 st.title("Check the Air Quality Index in your area");
-
-st.write("Click Me to Check!")
+st.write("Click The Icon Belo to Begin!")
 location = streamlit_geolocation()
-display_and_fetch_data(location)
+main(location)
 
+
+st.header("Air Quality Historical Data Visualised")
 components.iframe("https://lookerstudio.google.com/embed/u/0/reporting/1e01b8fc-0baa-4219-81bd-258967fc09b0/page/f7gAF", height=500)
