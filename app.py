@@ -1,5 +1,6 @@
 import streamlit as st;
 from streamlit_geolocation import streamlit_geolocation;
+import streamlit.components.v1 as components
 import requests;
 
 def display_and_fetch_data(location):
@@ -62,3 +63,5 @@ st.title("Check the Air Quality Index in your area");
 st.write("Click Me to Check!")
 location = streamlit_geolocation()
 display_and_fetch_data(location)
+
+components.iframe("https://lookerstudio.google.com/embed/u/0/reporting/1e01b8fc-0baa-4219-81bd-258967fc09b0/page/f7gAF", height=500)
