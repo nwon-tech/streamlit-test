@@ -82,10 +82,10 @@ def display_centered_metric(aqi,city,air_quality):
     """
     # HTML code using inline CSS for centering and styling
     html_code = f"""
-    <div style="display: flex; align-items: center; justify-content: center; height: 600px;">
+    <div style="display: flex; align-items: center; justify-content: center; height: 150px;">
         <div style="background: transparent; padding: 20px; text-align: center; color: white; font-family: Sans-Serif; font-weight: bold; border-radius: 10px; background: rgba(0, 0, 0, 0.5);">
-            <h2 style="margin: 0;">{city}</h2>
-            <h2 style="color: white;">Current Air Quality</h2>
+            <h3 style="margin: 0;">{city}</h3>
+            <h3 style="color: white;">Current Air Quality</h3>
             <p style="font-size: 48px; margin: 10px 0;">{aqi}</p>
             <h3 style="color: white;">{air_quality}</h3>
         </div>
