@@ -26,6 +26,10 @@ page_by_image = """
 [data-testid="stSidebarContent"]{
     background: rgba(51, 170, 51, 1);
 }
+
+[data-testid="stElementContainer"]{
+    overflow: hidden;
+}
 </style>
 """
 
