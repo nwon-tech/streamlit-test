@@ -32,6 +32,25 @@ page_by_image = """
 # Inject the CSS styling into the app
 st.markdown(page_by_image, unsafe_allow_html=True)
 
+def aqi_rating(aqi):
+    """
+    Converts the AQI value to a qualitative rating.
+    """
+    if aqi >= 0 and aqi <= 50:
+        return "Good"
+    elif aqi >= 51 and aqi <= 100:
+        return "Moderate"
+    elif aqi >= 101 and aqi <= 150:
+        return "Unhealthy for Sensitive Groups"
+    elif aqi >= 151 and aqi <= 200:
+        return "Unhealthy"
+    elif aqi >= 201 and aqi <= 300:
+        return "Very Unhealthy"
+    elif aqi >= 301:
+        return "Hazardous"
+    else:
+        return "Unknown"
+    
 def display_and_fetch_data(location):
     """
     Extracts latitude and longitude from the geolocation data,
@@ -56,7 +75,7 @@ def display_and_fetch_data(location):
     except requests.exceptions.RequestException as e:
         st.error(f"Failed to retrieve data: {e}")
 
-def display_centered_metric(aqi,city):
+def display_centered_metric(aqi,city,air_quality):
     """
     Creates a custom HTML block to display the Air Quality Index (AQI)
     in a centered layout, then embeds it in the Streamlit app.
@@ -65,9 +84,10 @@ def display_centered_metric(aqi,city):
     html_code = f"""
     <div style="display: flex; align-items: center; justify-content: center; height: 150px;">
         <div style="background: transparent; padding: 20px; text-align: center; color: white; font-family: Sans-Serif; font-weight: bold; border-radius: 10px; background: rgba(0, 0, 0, 0.5);">
-            <h3 style="margin: 0;">Air Quality Index</h3>
+            <h2 style="margin: 0;">{city}</h2>
+            <h2 style="color: white;">Current Air Quality</h2>
             <p style="font-size: 48px; margin: 10px 0;">{aqi}</p>
-            <h3 style="color: white;">{city}</h3>
+            <h3 style="color: white;">{air_quality}</h3>
         </div>
     </div>
     """
@@ -91,8 +111,10 @@ def current_air_quality(payload):
         st.error("AQI or City name is missing from the payload data.")
         return
     
+    air_quality = aqi_rating(aqi)
+    
     # custom function to display centered AQI
-    display_centered_metric(aqi,city)
+    display_centered_metric(aqi,city,air_quality)
 
 # Main app interface
 st.title("Check the Air Quality Index in your area")
