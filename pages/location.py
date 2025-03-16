@@ -20,10 +20,6 @@ page_by_image = """
     background-color: transparent;
 }
 
-[data-testid="stSidebarContent"]{
-    background: rgb(128, 0, 0);
-}
-
 [data-testid="stElementContainer" > data-testid="stFullScreenFrame"]{
     color: white;
     padding: 10px;

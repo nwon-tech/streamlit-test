@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_geolocation import streamlit_geolocation
 import streamlit.components.v1 as components
+import base64
 import requests
 
 # Set the page title and icon (must be called first)
@@ -21,10 +22,6 @@ page_by_image = """
 
 [data-testid="stHeader"] {
     background-color: transparent;
-}
-
-[data-testid="stSidebarContent"]{
-    background: rgb(128, 0, 0);
 }
 
 [data-testid="stMarkdownContainer"]{
@@ -129,11 +126,8 @@ def aqi_recommendation(air_quality):
         st.error(recommendations.get("Unknown"))
 
 def current_air_quality(payload):
-    """
-    Extracts and displays the city name and AQI from the API response.
-    It uses the custom HTML component to display the AQI in a centered manner.
-    """
-    # if payload is None:
+
+    # keep for debugging
     #     aqi = payload.get("data", {}).get("aqi")
     #     city = payload.get("data", {}).get("city", {}).get("name")
     
@@ -152,7 +146,7 @@ def current_air_quality(payload):
     aqi_recommendation(air_quality)
 
 # Main app interface
-# st.title("Check the Air Quality Index in your area")
+st.title("Check the Air Quality Index in your Area")
 st.write("Click The Icon Below to Begin!")
 
 # Fetch geolocation and air quality data
