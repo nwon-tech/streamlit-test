@@ -16,7 +16,7 @@ page_by_image = """
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     opacity: 1;
     background-size: cover;
-    background-image: url("https://images.unsplash.com/photo-1599148401012-60bd30ff1967?q=80&w=1527&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-image: url("https://images.unsplash.com/photo-1534083708493-62fff9d96ecc?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 }
 
 [data-testid="stHeader"] {
@@ -66,40 +66,8 @@ def aqi_rating(aqi):
         return "Unhealthy"
     else:
         return "Unknown"
-
-def aqi_recommendation(rating):
-    """
-    Provides recommendations based on the AQI value.
-    """
-    if rating == "Good":
-        return "Air quality is considered satisfactory, and air pollution poses little or no risk."
-    
     
 def display_and_fetch_data(location):
-    """
-    Extracts latitude and longitude from the geolocation data,
-    then fetches air quality data using a GET request.
-    """
-    latitude = location.get("latitude")
-    longitude = location.get("longitude")
-    
-    # Ensure valid latitude and longitude are provided
-    if latitude is None or longitude is None:
-        st.error("Kindly select the location button to check the air quality.")
-        return
-
-    # Build API URL with the given coordinates
-    api_url = f"https://api.waqi.info/feed/geo:{latitude};{longitude}/?token=261ee3243494eb7a36e0edd4deabfcc92eee9880"
-
-    try:
-        response = requests.get(api_url)
-        response.raise_for_status()
-        data = response.json()
-        return data
-    except requests.exceptions.RequestException as e:
-        st.error(f"Failed to retrieve data: {e}")
-
-def placeholder_display_and_fetch_data(location):
     """
     Extracts latitude and longitude from the geolocation data,
     then fetches air quality data using a GET request.
