@@ -24,13 +24,28 @@ page_by_image = """
 }
 
 [data-testid="stSidebarContent"]{
-    background: rgba(51, 170, 51, 1);
+    background: rgb(128, 0, 0);
 }
 </style>
 """
 
+# pg = st.navigation([st.Page("app.py", icon="🏠"), st.Page("pages/location.py", icon="📚")])
+
+# check_current_aqi = st.Page("app.py", title="Check Your Current AQI | Pollc", icon=":material/home:")
+# check_destination_aqi = st.Page("location.py", title="Check Your Destination AQI", icon=":material/gps_fixed:")
+
+# pg = st.navigation([check_current_aqi, check_destination_aqi])
+# st.set_page_config(page_title="Home ", page_icon=":material/edit:")
+# pg.run()
+
 # Inject the CSS styling into the app
 st.markdown(page_by_image, unsafe_allow_html=True)
+
+# Display a notification at the top of the page to notify user that data is sourced from open source
+st.info(
+    "All data is sourced from The World Air Quality Index Project. "
+    "Please note that while the data is openly sourced, users should still take necessary precautions.",icon="ℹ️"
+)
 
 def aqi_rating(aqi):
     """
@@ -44,12 +59,16 @@ def aqi_rating(aqi):
         return "Unhealthy for Sensitive Groups"
     elif aqi >= 151 and aqi <= 200:
         return "Unhealthy"
-    elif aqi >= 201 and aqi <= 300:
-        return "Very Unhealthy"
-    elif aqi >= 301:
-        return "Hazardous"
     else:
         return "Unknown"
+
+def aqi_recommendation(rating):
+    """
+    Provides recommendations based on the AQI value.
+    """
+    if rating == "Good":
+        return "Air quality is considered satisfactory, and air pollution poses little or no risk."
+    
     
 def display_and_fetch_data(location):
     """
