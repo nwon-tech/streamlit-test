@@ -35,13 +35,12 @@ page_by_image = """
 </style>
 """
 
-# pg = st.navigation([st.Page("app.py", icon="🏠"), st.Page("pages/location.py", icon="📚")])
+# st.navigation([st.Page("app.py", icon="🏠"), st.Page("./pages/location.py", icon="📚")])
 
 # check_current_aqi = st.Page("app.py", title="Check Your Current AQI | Pollc", icon=":material/home:")
 # check_destination_aqi = st.Page("location.py", title="Check Your Destination AQI", icon=":material/gps_fixed:")
 
 # pg = st.navigation([check_current_aqi, check_destination_aqi])
-# st.set_page_config(page_title="Home ", page_icon=":material/edit:")
 # pg.run()
 
 # Inject the CSS styling into the app
