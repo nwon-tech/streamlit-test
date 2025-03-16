@@ -1,10 +1,8 @@
 import streamlit as st
 import requests
 import urllib.parse
+import time
 
-# ---------------------------
-# Set up the Streamlit app page configuration
-# ---------------------------
 st.set_page_config(page_title="Destination AQI", layout="wide")
 
 def destination_aqi(search_query):
@@ -29,8 +27,11 @@ def get_map(lon, lat):
         return
     
     try:
-        # Display the map using GeoApify Static Maps API
-        st.image(f"https://maps.geoapify.com/v1/staticmap?style=osm-bright-smooth&width=600&height=400&center=lonlat:{lon},{lat}&zoom=12&marker=lonlat:{lat},{lon};color:%23ff0000;size:medium&apiKey=6f655e8fd34b405e89d8657aa0a12d41")
+        # Display loading animation
+        with st.spinner("Loading map...", show_time=True):
+            time.sleep(5)
+            # Display the map using GeoApify Static Maps API
+            st.image(f"https://maps.geoapify.com/v1/staticmap?style=osm-bright-smooth&width=600&height=400&center=lonlat:{lon},{lat}&zoom=12&marker=lonlat:{lat},{lon};color:%23ff0000;size:medium&apiKey=6f655e8fd34b405e89d8657aa0a12d41")
     except requests.exceptions.RequestException as e:
         st.error(f"Failed to retrieve data: {e}")
 
