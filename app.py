@@ -168,5 +168,6 @@ else:
     current_air_quality(data)
 
 # Embed an iframe for additional historical data visualisation
-# st.header("Air Quality Historical Data Visualised")
-# components.iframe("https://lookerstudio.google.com/embed/u/0/reporting/1e01b8fc-0baa-4219-81bd-258967fc09b0/page/f7gAF", height=500)
+st.header("Air Quality Historical Data Visualised")
+st.write("Use the available filters to explore historical air quality data. Data sourced from Looker Studio.")
+components.iframe("https://lookerstudio.google.com/embed/u/0/reporting/1e01b8fc-0baa-4219-81bd-258967fc09b0/page/f7gAF", height=750)
