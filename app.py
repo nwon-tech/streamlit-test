@@ -32,13 +32,19 @@ page_by_image = """
 }
 
 [data-testid="stBaseButton-headerNoPadding"]{
-color: rgba(0, 0, 0, 0.5);}
+    color: rgba(0, 0, 0, 0.5);
+}
+
 </style>
 """
 
-st.page_link("app.py", label="Home", icon="🏠")
-st.page_link("pages/location.py", label="AQI By Destination", icon="📍")
-
+# Acts as a navigation bar for the app
+# aligns the links to the horizontally
+col1, col2 = st.columns([1, 2])
+with col1:
+    st.page_link("app.py", label="Homepage", icon="🏠")
+with col2:
+    st.page_link("pages/location.py", label="AQI By Destination Page", icon="📍")
 
 # Inject the CSS styling into the app
 st.markdown(page_by_image, unsafe_allow_html=True)
@@ -147,7 +153,7 @@ def current_air_quality(payload):
 
 # Main app interface
 st.title("Check the Air Quality Index in your Area")
-st.write("Click The Icon Below to Begin!")
+st.write("Click The Icon ⌖ Below to Begin!")
 
 # Fetch geolocation and air quality data
 location = streamlit_geolocation()
