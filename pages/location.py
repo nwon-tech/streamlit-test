@@ -226,7 +226,7 @@ if st.button("Search"):
     destination_aqi(query)
     st.caption("Powered by MapTiler, Waqi.info, and GeoApify")
 
-st.header("Forecaasted Air Quality")
+st.header("Forecasted Air Quality")
 st.write("Use the available filters to explore search the forecasted air quality. Data sourced from Looker Studio.")
 components.iframe("https://lookerstudio.google.com/embed/reporting/32539d04-bab9-4b72-9014-345f50b5db98/page/lNzCF", height=750)
 
