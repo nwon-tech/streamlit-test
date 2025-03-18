@@ -7,8 +7,8 @@ import requests
 # Set the page title and icon (must be called first)
 st.set_page_config(
     page_title="PolluCheck",
-    page_icon="💨",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed"
 )
 
 # Background styling for the app
@@ -30,16 +30,15 @@ page_by_image = """
     padding: 10px;
     border-radius: 10px;
 }
+
+[data-testid="stBaseButton-headerNoPadding"]{
+color: rgba(0, 0, 0, 0.5);}
 </style>
 """
 
-# st.navigation([st.Page("app.py", icon="🏠"), st.Page("./pages/location.py", icon="📚")])
+st.page_link("app.py", label="Home", icon="🏠")
+st.page_link("pages/location.py", label="AQI By Destination", icon="📍")
 
-# check_current_aqi = st.Page("app.py", title="Check Your Current AQI | Pollc", icon=":material/home:")
-# check_destination_aqi = st.Page("location.py", title="Check Your Destination AQI", icon=":material/gps_fixed:")
-
-# pg = st.navigation([check_current_aqi, check_destination_aqi])
-# pg.run()
 
 # Inject the CSS styling into the app
 st.markdown(page_by_image, unsafe_allow_html=True)
