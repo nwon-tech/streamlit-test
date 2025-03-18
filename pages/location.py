@@ -4,7 +4,7 @@ import urllib.parse
 import streamlit.components.v1 as components
 import time
 
-st.set_page_config(page_title="Destination AQI", layout="wide")
+st.set_page_config(page_title="Destination AQI", layout="wide", initial_sidebar_state="collapsed")
 
 # Background styling for the app
 page_by_image = """
@@ -26,8 +26,13 @@ page_by_image = """
     border-radius: 10px;
 }
 
+[data-testid="stBaseButton-headerNoPadding"]{
+color: rgba(0, 0, 0, 0.5);}
+
 </style>
 """
+st.page_link("app.py", label="Home", icon="🏠")
+st.page_link("pages/location.py", label="AQI By Destination", icon="📍")
 
 # Inject the CSS styling into the app
 st.markdown(page_by_image, unsafe_allow_html=True)
@@ -220,6 +225,11 @@ query = st.text_input("Enter location to search. Click the Search button to chec
 if st.button("Search"):
     destination_aqi(query)
     st.caption("Powered by MapTiler, Waqi.info, and GeoApify")
+
+st.header("Forecaasted Air Quality")
+st.write("Use the available filters to explore search the forecasted air quality. Data sourced from Looker Studio.")
+components.iframe("https://lookerstudio.google.com/embed/reporting/32539d04-bab9-4b72-9014-345f50b5db98/page/lNzCF", height=750)
+
 
 
 
