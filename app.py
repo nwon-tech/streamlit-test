@@ -8,6 +8,7 @@ import requests
 st.set_page_config(
     page_title="PolluCheck",
     page_icon="💨",
+    layout="wide"
 )
 
 # Background styling for the app
