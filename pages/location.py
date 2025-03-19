@@ -4,18 +4,29 @@ import urllib.parse
 import streamlit.components.v1 as components
 import time
 
-st.set_page_config(page_title="Destination AQI", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(
+    page_title="Destination AQI", 
+    layout="wide", 
+    initial_sidebar_state="collapsed"
+                   )
 
 # Background styling for the app
 page_by_image = """
 <style>
+
 [data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: white;
     background-size: cover;
+    background-image: url("https://images.unsplash.com/photo-1534083708493-62fff9d96ecc?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 }
+
+[data-testid="stMarkdownContainer"]{
+    color:white;
+    }
 
 [data-testid="stHeader"] {
     background-color: transparent;
+    color: white;
 }
 
 [data-testid="stElementContainer" > data-testid="stFullScreenFrame"]{
