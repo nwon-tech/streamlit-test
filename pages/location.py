@@ -24,6 +24,10 @@ page_by_image = """
     color:white;
     }
 
+[data-testid="stBaseButton-secondary"]>[data-testid="stMarkdownContainer"]{
+    color:black;
+}
+
 [data-testid="stHeader"] {
     background-color: transparent;
     color: white;
