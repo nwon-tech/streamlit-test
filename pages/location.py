@@ -49,6 +49,15 @@ page_by_image = """
     opacity: 1;    
 }
 
+[data-testid="stHeadingWithActionElements"]>h1{
+    text-align: center
+}
+
+[data-testid="stCaptionContainer"]{
+    text-align: center
+    
+}
+
 </style>
 """
 # Acts as a navigation bar for the app
@@ -268,7 +277,10 @@ def aqi_recommendation(air_quality):
     else:
         st.error(recommendations.get("Unknown"))
 
-st.title("Pollucheck")
+st.title("PolluCheck")
+st.caption("_Stay Informed, Stay Healthy._")
+st.divider()
+
 st.header("Destination AQI")
 st.write(
     """

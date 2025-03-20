@@ -35,6 +35,14 @@ page_by_image = """
     color: rgba(0, 0, 0, 0.5);
 }
 
+[data-testid="stHeadingWithActionElements"]>h1{
+    text-align: center
+}
+
+[data-testid="stCaptionContainer"]{
+    text-align: center
+    
+}
 </style>
 """
 
@@ -181,7 +189,9 @@ def current_air_quality(payload):
     aqi_recommendation(air_quality)
 
 # Main app interface
-st.title("Pollucheck")
+st.title("PolluCheck")
+st.caption("_Stay Informed, Stay Healthy._")
+st.divider()
 
 # Display a notification at the top of the page to notify user that data is sourced from open source
 st.info(
