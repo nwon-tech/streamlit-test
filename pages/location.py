@@ -25,7 +25,9 @@ page_by_image = """
     }
 
 [data-testid="stBaseButton-secondary"]>[data-testid="stMarkdownContainer"]{
-    color:black;
+    background-color: black;
+    color: white;
+
 }
 
 [data-testid="stHeader"] {
