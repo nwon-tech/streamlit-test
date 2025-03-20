@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_geolocation import streamlit_geolocation
 import streamlit.components.v1 as components
-import base64
+import pandas as pd
 import requests
 
 # Set the page title and icon (must be called first)
@@ -182,7 +182,6 @@ def current_air_quality(payload):
         return
     
     air_quality = aqi_rating(aqi)
-    st.write(air_quality);
     
     # custom function to display centered AQI
     display_centered_metric(aqi,city,air_quality)
@@ -216,3 +215,5 @@ else:
         "longitude": 101.6841
     }
     current_air_quality(data)
+
+st.subheader("What does the recommendation mean?")
