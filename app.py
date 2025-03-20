@@ -1,7 +1,6 @@
 import streamlit as st
 from streamlit_geolocation import streamlit_geolocation
 import streamlit.components.v1 as components
-import pandas as pd
 import requests
 
 # Set the page title and icon (must be called first)
@@ -217,3 +216,4 @@ else:
     current_air_quality(data)
 
 st.subheader("What does the recommendation mean?")
+st.image("air-quality-recomm.jpg")
