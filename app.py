@@ -48,11 +48,13 @@ page_by_image = """
 
 # Acts as a navigation bar for the app
 # aligns the links to the horizontally
-col1, col2 = st.columns([1, 2])
+col1, col2, col3 = st.columns([1, 2, 3])
 with col1:
     st.page_link("app.py", label="Homepage", icon="🏠")
 with col2:
     st.page_link("pages/location.py", label="AQI By Destination Page", icon="📍")
+with col3:
+    st.page_link("pages/historical.py", label="AQI Historical Data Page", icon="📜")
 
 # Inject the CSS styling into the app
 st.markdown(page_by_image, unsafe_allow_html=True)
@@ -214,10 +216,3 @@ else:
         "longitude": 101.6841
     }
     current_air_quality(data)
-
-
-
-# Embed an iframe for additional historical data visualisation
-st.header("Air Quality Historical Data Visualised")
-st.write("Use the available filters to explore historical air quality data. Data sourced from Looker Studio.")
-components.iframe("https://lookerstudio.google.com/embed/u/0/reporting/1e01b8fc-0baa-4219-81bd-258967fc09b0/page/f7gAF", height=750)
