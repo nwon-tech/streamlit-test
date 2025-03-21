@@ -24,7 +24,7 @@ page_by_image = """
     color:white;
     }
 
-[data-testid="stBaseButton-secondary"]>[data-testid="stMarkdownContainer"]{
+[data-testid="stBaseButton-secondary"]{
     background-color: black;
     color: white;
 
@@ -60,6 +60,7 @@ page_by_image = """
 
 </style>
 """
+
 # Acts as a navigation bar for the app
 # aligns the links to the horizontally
 col1, col2, col3 = st.columns([1, 2, 3])
