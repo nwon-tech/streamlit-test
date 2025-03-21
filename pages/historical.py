@@ -10,18 +10,23 @@ st.set_page_config(
 # Background styling for the app
 page_by_image = """
 <style>
+
 [data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    opacity: 1;
+    color: white;
     background-size: cover;
     background-image: url("https://images.unsplash.com/photo-1534083708493-62fff9d96ecc?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 }
 
+[data-testid="stMarkdownContainer"]{
+    color:white;
+    }
+
 [data-testid="stHeader"] {
     background-color: transparent;
+    color: white;
 }
 
-[data-testid="stMarkdownContainer"]{
+[data-testid="stElementContainer" > data-testid="stFullScreenFrame"]{
     color: white;
     padding: 10px;
     border-radius: 10px;
@@ -29,6 +34,10 @@ page_by_image = """
 
 [data-testid="stBaseButton-headerNoPadding"]{
     color: rgba(0, 0, 0, 0.5);
+}
+
+[data-testid="stAlert"]{
+    opacity: 1;    
 }
 
 [data-testid="stHeadingWithActionElements"]>h1{
@@ -39,8 +48,12 @@ page_by_image = """
     text-align: center
     
 }
+
 </style>
 """
+
+# Inject the CSS styling into the app
+st.markdown(page_by_image, unsafe_allow_html=True)
 
 
 # Acts as a navigation bar for the app

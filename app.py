@@ -35,13 +35,22 @@ page_by_image = """
 }
 
 [data-testid="stHeadingWithActionElements"]>h1{
-    text-align: center
+    text-align: center;
 }
 
 [data-testid="stCaptionContainer"]{
-    text-align: center
-    
+    text-align: center;
+    color: white;
 }
+
+[data-testid="stImageContainer"]{
+    margin: auto;
+}
+
+[data-testid="stAlert"]{
+    opacity: 1;
+}
+
 </style>
 """
 
